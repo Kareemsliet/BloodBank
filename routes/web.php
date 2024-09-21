@@ -11,7 +11,7 @@ Route::get('/contact-us',[MainController::class,'contact'])->name('contact-us');
 
 Route::get('/about',[MainController::class,'about'])->name('about');
 
-Route::get('/articles/{name}',[MainController::class,'getArticle'])->name('article');
+Route::get('/show-article/{name}',[MainController::class,'getArticle'])->name('article');
 
 Route::get('/show-donation/{donation}',[MainController::class,'getDonation'])->name('donation');
 
@@ -38,9 +38,13 @@ Route::post('/password/update',action: [AuthController::class,'updatePassword'])
 
 Route::group(['middleware'=>"auth:clients"],function(){
     Route::get('/donation',[MainController::class,'createDonation'])->name('donation.create');
+
     Route::post('/donation',[MainController::class,'requestDonation'])->name('donation.request');
+
     Route::post('/logout',[AuthController::class,'logout'])->name('client.logout');
+
     Route::get('/setting',[MainController::class,'changeSetting'])->name('client.setting');
+
     Route::get('/profile',[MainController::class,'getProfile'])->name('client.profile');
 });
 

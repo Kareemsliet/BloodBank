@@ -12,15 +12,25 @@ Route::get('/user', function (Request $request) {
 
 Route::group(['prefix' => "v1"], function () {
     Route::get('/states', [MainController::class, 'getStates']);
-    Route::get('/cities', [MainController::class, 'getCities']);
-    Route::get('/blood-types', [MainController::class, 'getBloodTypes']);
-    Route::get('/categories', [MainController::class, 'getCategories']);
-    Route::get('/cities/{state_id}',[MainController::class,'citiesByState']);
-    Route::get('/donations/{donation}',[MainController::class,'getDonation']);
-    Route::get('/articles/{article}',[MainController::class,'getArticle']);
 
+    Route::get('/cities', [MainController::class, 'getCities']);
+
+    Route::get('/blood-types', [MainController::class, 'getBloodTypes']);
+
+    Route::get('/categories', [MainController::class, 'getCategories']);
+
+    Route::get('/cities/{state_id}',[MainController::class,'citiesByState']);
+
+    Route::get('/show-donation/{donation}',[MainController::class,'getDonation']);
+
+    Route::get('/ashow-article/{article}',[MainController::class,'getArticle']);
+
+    Route::get('/articles', [MainController::class, "getArticles"]);
+
+    Route::get('/donations', [MainController::class, "getDonations"]);
 
     Route::get('/setting', [MainController::class, 'getSetting']);
+
     Route::get('/hero-pages', [MainController::class, 'getHeroPages']);
 
     Route::post('/register', [ClientsAuthController::class, 'regstire']);
@@ -32,12 +42,8 @@ Route::group(['prefix' => "v1"], function () {
     Route::post('/password/forget', [ClientsAuthController::class, 'updatePassword']);
 
     Route::group(['middleware' => "auth:sanctum"], function () {
-
-        Route::post('/donations/create', [MainController::class, 'addDonate']);
-
-        Route::get('/articles', [MainController::class, "getArticles"]);
-
-        Route::get('/donations', [MainController::class, "getDonations"]);
+        
+        Route::post('/donation/create', [MainController::class, 'addDonate']);
 
         Route::post('/contact', [MainController::class, 'addContact']);
 
@@ -56,7 +62,8 @@ Route::group(['prefix' => "v1"], function () {
 
             Route::post('/articles/favourite/{articel_id}', [ClientController::class, 'toggleFavourite']);
 
-            Route::post('/form', [ClientController::class, 'addData']);
+            Route::post('/profile/setting', [ClientController::class, 'addData']);
+
         });
     });
 });

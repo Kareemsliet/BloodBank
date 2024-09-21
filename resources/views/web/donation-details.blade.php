@@ -112,6 +112,7 @@
 
 @push('script')
 <script>
+
 var map;
 
 function initMap() {
@@ -140,8 +141,7 @@ var showPosition = function(position) {
 
 navigator.geolocation.getCurrentPosition(showPosition);
 
-  </script>
-<script src="{{asset('web/assets/js/locationpicker.jquery.js')}}"></script>
+</script>
 <script src="https://cdn.jsdelivr.net/gh/somanchiu/Keyless-Google-Maps-API@v6.8/mapsJavaScriptAPI.js" async defer></script>
 @endpush
 

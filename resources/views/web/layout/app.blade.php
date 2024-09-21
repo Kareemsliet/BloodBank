@@ -265,11 +265,7 @@ $notifications=auth('clients')->user()->clientNotifications()->where('read_at',n
 
     <script src="{{asset('web/assets/js/ajax.js')}}"></script>
 
-    <script src="{{asset('web/assets/js/locationpicker.jquery.js')}}"></script>
-
-
     @stack('script')
-
 
 </body>
 
